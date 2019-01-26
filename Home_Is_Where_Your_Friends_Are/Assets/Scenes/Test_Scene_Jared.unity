@@ -352,8 +352,12 @@ MonoBehaviour:
   jumpSpeed: 20
   airTime: 3
   floatY: 0
-  Planet: {fileID: 807187847}
+  Planet: {fileID: 722869606}
+  grav: {fileID: 0}
   can_jump: 0
+  being_controlled: 0
+  facing_right: 1
+  angleBetween: 0
 --- !u!1 &722869606
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +402,7 @@ GameObject:
   - component: {fileID: 807187850}
   m_Layer: 0
   m_Name: Planet
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -606,7 +610,7 @@ GameObject:
   - component: {fileID: 1434403466}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -799,7 +803,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1571859880
 MonoBehaviour:
   m_ObjectHideFlags: 0
