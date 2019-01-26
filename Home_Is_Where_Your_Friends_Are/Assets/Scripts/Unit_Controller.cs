@@ -9,20 +9,20 @@ public class Unit_Controller : MonoBehaviour {
     public float floatY = 0;
     public GameObject Planet;
     public PointEffector2D grav;
-    private Rigidbody2D rigidB;
+    public Rigidbody2D rigidB;
     public bool can_jump;
     public bool being_controlled = false;
     public bool facing_right = true;
     public float angleBetween = 0f;
 
     // Use this for initialization
-    void Start () {
+    protected virtual void Start () {
         rigidB = this.GetComponent<Rigidbody2D>();
         grav = Planet.transform.GetChild(1).GetComponent<PointEffector2D>();
     }
 	
 	// Update is called once per frame
-	void Update () {
+	protected virtual void Update () {
         if (being_controlled)
         {
             Jared_Take_Inputs();
