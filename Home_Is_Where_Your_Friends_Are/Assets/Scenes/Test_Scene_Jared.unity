@@ -348,12 +348,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e68f63a8ea147e24c88ad0ef9a11fe33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpSpeed: 20
-  airTime: 3
-  floatY: 0
-  Planet: {fileID: 807187847}
+  timeHold: 0
+  timeFullJump: 0.75
+  minJumpForce: 0.05
+  maxJumpForce: 0.17
+  Planet: {fileID: 722869606}
+  grav: {fileID: 0}
   can_jump: 0
+  angleBetween: 0
 --- !u!1 &722869606
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,7 +801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1571859880
 MonoBehaviour:
   m_ObjectHideFlags: 0
