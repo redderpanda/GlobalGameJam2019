@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Character_Controller : MonoBehaviour {
-    public float timeHold = 0.0f;
-    public float timeFullJump = 0.5f;
-    public float minJumpForce = 0.05f;
-    public float maxJumpForce = 0.15f;
     public GameObject Planet;
     public PointEffector2D grav;
     private Rigidbody2D rigidB;
