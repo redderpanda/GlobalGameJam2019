@@ -50,6 +50,11 @@ public class Unit_Controller : MonoBehaviour {
         }
 	}
 
+    public void OnDestroy()
+    {
+        GameObject.Find("LevelManager").GetComponent<LevelManager>().currentPlanet = currentPlanetIndex;
+    }
+
     public void TakePlanetRotationInToAccount()
     {
         float p_x = Planet.transform.position.x;
