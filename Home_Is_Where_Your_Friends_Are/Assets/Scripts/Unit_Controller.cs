@@ -154,7 +154,7 @@ public class Unit_Controller : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Planet")
+        if (collision.gameObject.tag == "Planet" || collision.gameObject.tag == "Friend")
         {
             can_jump = true;
             grav.forceMagnitude = -10f;
