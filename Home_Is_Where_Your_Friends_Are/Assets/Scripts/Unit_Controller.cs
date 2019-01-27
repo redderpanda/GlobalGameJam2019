@@ -75,7 +75,7 @@ public class Unit_Controller : MonoBehaviour {
 
             if (will_move)
             {
-                angleBetween -= 2;
+                angleBetween -= 1 / Planet.transform.GetChild(0).transform.localScale.x;
                 float sin_val = Mathf.Sin(angleBetween * Mathf.PI / 180);
                 float dist = Vector3.Distance(transform.position, Planet.transform.GetChild(0).transform.position);
                 //Debug.Log(dist);
@@ -111,7 +111,7 @@ public class Unit_Controller : MonoBehaviour {
 
             if (will_move)
             {
-                angleBetween += 2;
+                angleBetween += 1 / Planet.transform.GetChild(0).transform.localScale.x;
                 float sin_val = Mathf.Sin(angleBetween * Mathf.PI / 180);
                 float dist = Vector3.Distance(transform.position, Planet.transform.GetChild(0).transform.position);
                 float y = dist * sin_val;
