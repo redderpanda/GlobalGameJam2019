@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Team_Controller_Script : MonoBehaviour {
     public List<GameObject> team;
+    public GameObject camera;
     private string current_character_string;
     private GameObject current_character_obj;
 
@@ -62,10 +63,12 @@ public class Team_Controller_Script : MonoBehaviour {
             character.GetComponent<Unit_Controller>().being_controlled = false;
             character.gameObject.tag = "Friend";
 
+
         }
 
         team[list_index].GetComponent<Unit_Controller>().being_controlled = true;
         team[list_index].gameObject.tag = "Player";
+        camera.GetComponent<Camera_Follow>().Player = team[list_index];
 
     }
 
