@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy_Controller : Unit_Controller {
     public GameObject target;
@@ -23,7 +24,7 @@ public class Enemy_Controller : Unit_Controller {
                 //flip
                 transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             }
-            angleBetween -= 9f / Planet.transform.GetChild(0).transform.localScale.x;
+            angleBetween -= 8f / Planet.transform.GetChild(0).transform.localScale.x;
             float sin_val = Mathf.Sin(angleBetween * Mathf.PI / 180);
             float dist = Vector3.Distance(transform.position, Planet.transform.GetChild(0).transform.position);
             //Debug.Log(dist);
@@ -41,7 +42,7 @@ public class Enemy_Controller : Unit_Controller {
                 //flip
                 transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             }
-            angleBetween += 9f / Planet.transform.GetChild(0).transform.localScale.x;
+            angleBetween += 8f / Planet.transform.GetChild(0).transform.localScale.x;
             float sin_val = Mathf.Sin(angleBetween * Mathf.PI / 180);
             float dist = Vector3.Distance(transform.position, Planet.transform.GetChild(0).transform.position);
             float y = dist * sin_val;
@@ -61,7 +62,8 @@ public class Enemy_Controller : Unit_Controller {
             float rad = collision.gameObject.GetComponentInParent<Unit_Controller>().angleBetween * Mathf.PI / 180;
             Vector2 curr_up = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
             collision.gameObject.GetComponentInParent<Unit_Controller>().rigidB.AddForce(curr_up * 80f);
-            Destroy(this.gameObject);
+            SceneManager.LoadScene("Level2");
+            //Destroy(this.gameObject);
         }
     }
 
