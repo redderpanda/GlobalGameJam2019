@@ -51,6 +51,7 @@ public class Type_Writer_Text : MonoBehaviour {
         Name_Box_Paret_Object.SetActive(true);
         activate_containers();
         Dialog_List = text_chapter_object.GetComponent<Dialog_Chapter_Container>().Dialogue_Container;
+        
 	}
 
     // Update is called once per frame
@@ -85,32 +86,30 @@ public class Type_Writer_Text : MonoBehaviour {
         if(Dialog_List[dialog_cursor].Left_or_Right == true)
         {
             List<Dialog_Class> Dialogs_Before_This = Dialog_List.GetRange(0, dialog_cursor);
-            foreach(Dialog_Class DC in Dialogs_Before_This)
+            foreach(Dialog_Class DC in Dialog_List)
             {
-                if(DC.Left_or_Right == true)
-                {
-                    DC.Icon.SetActive(false);
-                }
+                DC.Icon.SetActive(false);
+                DC.Icon_R.SetActive(false);
             }
             Name_Box_L_Background.SetActive(false);
             Name_Box_R_Background.SetActive(true);
+            Dialog_List[dialog_cursor].Icon_R.SetActive(true);
             Dialog_List[dialog_cursor].Icon.SetActive(true);
-            Dialog_List[dialog_cursor].Icon.GetComponent<Image>().color = Color.white;
+            Dialog_List[dialog_cursor].Icon_R.GetComponent<Image>().color = Color.white;
             name_right_text.text = Dialog_List[dialog_cursor].Character_name;
         }
         else
         {
             List<Dialog_Class> Dialogs_Before_This = Dialog_List.GetRange(0, dialog_cursor);
-            foreach (Dialog_Class DC in Dialogs_Before_This)
+            foreach (Dialog_Class DC in Dialog_List)
             {
-                if (DC.Left_or_Right == false)
-                {
-                    DC.Icon.SetActive(false);
-                }
+                DC.Icon.SetActive(false);
+                DC.Icon_R.SetActive(false);
             }
             Name_Box_R_Background.SetActive(false);
             Name_Box_L_Background.SetActive(true);
             Dialog_List[dialog_cursor].Icon.SetActive(true);
+            Dialog_List[dialog_cursor].Icon_R.SetActive(true);
             Dialog_List[dialog_cursor].Icon.GetComponent<Image>().color = Color.white;
             name_left_text.text = Dialog_List[dialog_cursor].Character_name;
         }
