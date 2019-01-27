@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50227411996972582}
   - component: {fileID: 70096937004157246}
   - component: {fileID: 114014976503336028}
+  - component: {fileID: 95377826211374354}
   m_Layer: 0
   m_Name: Savage
   m_TagString: Friend
@@ -133,6 +134,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0.028059818, y: -0.2666965}
   m_Size: {x: 2.6583223, y: 5.207011}
   m_Direction: 0
+--- !u!95 &95377826211374354
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1453401506334478}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f49eb5c669156a74b859ada2a5f30305, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114014976503336028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,6 +174,7 @@ MonoBehaviour:
   being_controlled: 0
   facing_right: 1
   angleBetween: 0
+  anim: {fileID: 0}
   hitBox: {fileID: 0}
   upsideDown: 0
 --- !u!212 &212833694954507414

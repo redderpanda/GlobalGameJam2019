@@ -23,6 +23,7 @@ public class Unit_Controller : MonoBehaviour {
     // Use this for initialization
     protected virtual void Start () {
         rigidB = this.GetComponent<Rigidbody2D>();
+        Planet = GameObject.Find("OutterShell");
         grav = Planet.transform.GetChild(1).GetComponent<PointEffector2D>();
         anim = GetComponent<Animator>();
     }
@@ -78,7 +79,7 @@ public class Unit_Controller : MonoBehaviour {
 
             if (will_move)
             {
-                angleBetween -= 1 / Planet.transform.GetChild(0).transform.localScale.x;
+                angleBetween -= 10 / Planet.transform.GetChild(0).transform.localScale.x;
                 float sin_val = Mathf.Sin(angleBetween * Mathf.PI / 180);
                 float dist = Vector3.Distance(transform.position, Planet.transform.GetChild(0).transform.position);
                 //Debug.Log(dist);
@@ -114,7 +115,7 @@ public class Unit_Controller : MonoBehaviour {
 
             if (will_move)
             {
-                angleBetween += 1 / Planet.transform.GetChild(0).transform.localScale.x;
+                angleBetween += 10 / Planet.transform.GetChild(0).transform.localScale.x;
                 float sin_val = Mathf.Sin(angleBetween * Mathf.PI / 180);
                 float dist = Vector3.Distance(transform.position, Planet.transform.GetChild(0).transform.position);
                 float y = dist * sin_val;
@@ -140,7 +141,7 @@ public class Unit_Controller : MonoBehaviour {
             if (can_jump)
             {
                 can_jump = false;
-                rigidB.AddForce(curr_up * 90f);
+                rigidB.AddForce(curr_up * 65f);
             }
         }
         if (Input.GetKey(KeyCode.W) && !can_jump)
