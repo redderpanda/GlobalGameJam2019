@@ -15,6 +15,7 @@ public class Enemy_Controller : Unit_Controller {
 	// Update is called once per frame
 	protected override void Update () {
         TakePlanetRotationInToAccount();
+        target = GameObject.FindGameObjectWithTag("Player");
         float diff = angleBetween - target.GetComponent<Unit_Controller>().angleBetween;
         if(diff > 0)
         {
@@ -33,8 +34,9 @@ public class Enemy_Controller : Unit_Controller {
             float x = dist * cos_val;
             Vector3 new_pos = new Vector3(x, y, transform.position.z);
             transform.position = new_pos;
+
         }
-        else if(diff <= 0)
+        else if (diff <= 0)
         {
             if (facing_right)
             {
@@ -51,19 +53,27 @@ public class Enemy_Controller : Unit_Controller {
             Vector3 new_pos = new Vector3(x, y, transform.position.z);
             transform.position = new_pos;
         }
-        
+
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if(collision.gameObject.tag == "Player")
+    //    {
+    //        Debug.Log("died");
+    //        float rad = collision.gameObject.GetComponentInParent<Unit_Controller>().angleBetween * Mathf.PI / 180;
+    //        Vector2 curr_up = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
+    //        collision.gameObject.GetComponentInParent<Unit_Controller>().rigidB.AddForce(curr_up * 80f);
+    //        //SceneManager.LoadScene("Level2");
+    //        Destroy(this.gameObject);
+    //    }
+    //}
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.collider.CompareTag("Player"))
         {
-            Debug.Log("died");
-            float rad = collision.gameObject.GetComponentInParent<Unit_Controller>().angleBetween * Mathf.PI / 180;
-            Vector2 curr_up = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
-            collision.gameObject.GetComponentInParent<Unit_Controller>().rigidB.AddForce(curr_up * 80f);
             SceneManager.LoadScene("Level2");
-            //Destroy(this.gameObject);
         }
     }
 

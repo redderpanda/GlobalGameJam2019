@@ -14,11 +14,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/Level4.unity
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/f922acbaa09bd404b8ca9ef70a73da35
     guid: f922acbaa09bd404b8ca9ef70a73da35
   - enabled: 1
-    path: Assets/Scenes/FinalLevel(possibly).unity
+    path: Assets/Scenes/Level3.unity
     guid: d0c1a1506b3bf8e4e826e72aedc18db3
   - enabled: 1
     path: Assets/Scenes/Level1.unity
