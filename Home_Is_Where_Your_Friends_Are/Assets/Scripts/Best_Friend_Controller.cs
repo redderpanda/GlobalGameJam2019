@@ -36,6 +36,7 @@ public class Best_Friend_Controller : Unit_Controller {
             frozen = !frozen;
             if(frozen)
             {
+
                 rigidB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 
             }

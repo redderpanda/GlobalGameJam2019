@@ -15,7 +15,8 @@ public class Unit_Controller : MonoBehaviour {
     public bool being_controlled = false;
     public bool facing_right = true;
     public float angleBetween = 0f;
-    public int currentSceneIndex = 0;
+    public int currentPlanetIndex = 0;
+    public GameObject crown;
 
     
 
@@ -32,7 +33,7 @@ public class Unit_Controller : MonoBehaviour {
         {
             if(SceneManager.GetActiveScene().name == Team_Controller_Script.planetNames[i])
             {
-                currentSceneIndex = i;
+                currentPlanetIndex = i;
                 break;
             }
 
@@ -158,11 +159,11 @@ public class Unit_Controller : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.W) && !can_jump)
         {
-            grav.forceMagnitude = -6f;
+            grav.forceMagnitude = -Team_Controller_Script.planetJumpGravity[currentPlanetIndex];
         }
         if (Input.GetKeyUp(KeyCode.W) && !can_jump)
         {
-            grav.forceMagnitude = -10f;
+            grav.forceMagnitude = -Team_Controller_Script.planetGravity[currentPlanetIndex];
         }
     }
 
@@ -188,7 +189,7 @@ public class Unit_Controller : MonoBehaviour {
         if (collision.gameObject.tag == "Planet")
         {
             can_jump = true;
-            grav.forceMagnitude = -10f;
+            grav.forceMagnitude = -Team_Controller_Script.planetGravity[currentPlanetIndex];
         }
     }
 

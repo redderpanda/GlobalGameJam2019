@@ -8,8 +8,8 @@ public class Team_Controller_Script : MonoBehaviour {
     private string current_character_string;
     private GameObject current_character_obj;
 
-    public static float[] planetGravity = new float[] { 10, 10, 10, 10, 10 };
-    public static float[] planetJumpGravity = new float[] { 6, 6, 6, 6, 6 };
+    public static float[] planetGravity = new float[] { 10, 10, 10, 10, 7 };
+    public static float[] planetJumpGravity = new float[] { 6, 6, 6, 6, 3 };
     public static string[] planetNames = new string[] { "Level1", "Level2", "Level3", "Level4", "Level5" };
 
     // Use this for initialization
@@ -61,12 +61,15 @@ public class Team_Controller_Script : MonoBehaviour {
         foreach(GameObject character in team)
         {
             character.GetComponent<Unit_Controller>().being_controlled = false;
+            character.GetComponent<Unit_Controller>().crown.SetActive(false);
             character.gameObject.tag = "Friend";
+
 
 
         }
 
         team[list_index].GetComponent<Unit_Controller>().being_controlled = true;
+        team[list_index].GetComponent<Unit_Controller>().crown.SetActive(true);
         team[list_index].gameObject.tag = "Player";
         camera.GetComponent<Camera_Follow>().Player = team[list_index];
 
