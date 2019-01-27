@@ -20,7 +20,7 @@ public class Unit_Controller : MonoBehaviour {
     // Use this for initialization
     protected virtual void Start () {
         rigidB = this.GetComponent<Rigidbody2D>();
-        Planet = GameObject.Find("OutterShell");
+        Planet = GameObject.Find("OuterShell");
         grav = Planet.transform.GetChild(1).GetComponent<PointEffector2D>();
         anim = GetComponent<Animator>();
     }
