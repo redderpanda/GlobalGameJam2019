@@ -56,9 +56,13 @@ public class Team_Controller_Script : MonoBehaviour {
         foreach(GameObject character in team)
         {
             character.GetComponent<Unit_Controller>().being_controlled = false;
+            character.gameObject.tag = "Friend";
+
         }
 
         team[list_index].GetComponent<Unit_Controller>().being_controlled = true;
+        team[list_index].gameObject.tag = "Player";
+
     }
 
     private void avengers_assemble()
