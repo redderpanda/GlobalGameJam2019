@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Unit_Controller : MonoBehaviour {
     public float speed = 5f;
@@ -14,6 +15,11 @@ public class Unit_Controller : MonoBehaviour {
     public bool being_controlled = false;
     public bool facing_right = true;
     public float angleBetween = 0f;
+    public int currentPlanetIndex = 0;
+    public GameObject crown;
+
+    
+
 
     public Animator anim;
 
@@ -23,6 +29,16 @@ public class Unit_Controller : MonoBehaviour {
         Planet = GameObject.Find("OuterShell");
         grav = Planet.transform.GetChild(1).GetComponent<PointEffector2D>();
         anim = GetComponent<Animator>();
+        for(int i = 0; i <= 5; i++)
+        {
+            if(SceneManager.GetActiveScene().name == Team_Controller_Script.planetNames[i])
+            {
+                currentPlanetIndex = i;
+                break;
+            }
+
+        }
+
     }
 	
 	// Update is called once per frame
@@ -143,11 +159,11 @@ public class Unit_Controller : MonoBehaviour {
         }
         if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)) && !can_jump)
         {
-            grav.forceMagnitude = -6f;
+            grav.forceMagnitude = -Team_Controller_Script.planetJumpGravity[currentPlanetIndex];
         }
         if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W)) && !can_jump)
         {
-            grav.forceMagnitude = -10f;
+            grav.forceMagnitude = -Team_Controller_Script.planetGravity[currentPlanetIndex];
         }
     }
 
@@ -173,7 +189,7 @@ public class Unit_Controller : MonoBehaviour {
         if (collision.gameObject.tag == "Planet")
         {
             can_jump = true;
-            grav.forceMagnitude = -10f;
+            grav.forceMagnitude = -Team_Controller_Script.planetGravity[currentPlanetIndex];
         }
     }
 
