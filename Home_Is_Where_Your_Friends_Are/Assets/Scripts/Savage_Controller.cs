@@ -2,34 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit_Controller : MonoBehaviour {
-    public float speed = 5f;
-    public float jumpSpeed = 20f;
-    public float airTime = 3f;
-    public float floatY = 0;
-    public GameObject Planet;
-    public PointEffector2D grav;
-    public Rigidbody2D rigidB;
-    public bool can_jump;
-    public bool being_controlled = false;
-    public bool facing_right = true;
-    public float angleBetween = 0f;
+public class Savage_Controller : Unit_Controller {
+    public GameObject hitBox;
+    public bool upsideDown = false;
 
-    // Use this for initialization
-    protected virtual void Start () {
-        rigidB = this.GetComponent<Rigidbody2D>();
-        grav = Planet.transform.GetChild(1).GetComponent<PointEffector2D>();
-    }
+	// Use this for initialization
+	protected override void Start () {
+        base.Start();
+        hitBox = transform.GetChild(0).gameObject;
+	}
 	
 	// Update is called once per frame
-	protected virtual void Update () {
-        if (being_controlled)
+	protected override void Update () {
+        if(upsideDown && can_jump)
         {
-            Jared_Take_Inputs();
+            Jump();
         }
-	}
+        if(upsideDown && !can_jump)
+        {
+            Fake_Update();
+        }
+        if (!upsideDown)
+        {
+            base.Update();
+        }
+    }
 
-    public virtual void Jared_Take_Inputs()
+    public void Fake_Update()
     {
         float p_x = Planet.transform.position.x;
         float p_y = Planet.transform.position.y;
@@ -55,12 +54,11 @@ public class Unit_Controller : MonoBehaviour {
 
             foreach (RaycastHit2D rayHit in hit2D_d)
             {
-                if (rayHit.collider.gameObject.tag == "Planet" || rayHit.collider.gameObject.tag == "Friend")
+                if (rayHit.collider.gameObject.tag == "Planet")
                 {
                     will_move = false;
                     Debug.Log("Got something: Right");
                 }
-                
             }
 
             if (will_move)
@@ -91,7 +89,7 @@ public class Unit_Controller : MonoBehaviour {
 
             foreach (RaycastHit2D rayHit in hit2D_d)
             {
-                if (rayHit.collider.gameObject.tag == "Planet" || rayHit.collider.gameObject.tag == "Friend")
+                if (rayHit.collider.gameObject.tag == "Planet")
                 {
                     will_move = false;
                     Debug.Log("Got something: Left");
@@ -110,11 +108,30 @@ public class Unit_Controller : MonoBehaviour {
                 transform.position = new_pos;
             }
         }
-
-        Jump();
     }
 
-    public virtual void Jump()
+    public IEnumerator Attack()
+    {
+        yield return new WaitForSeconds(0.1f);
+        grav.forceMagnitude = -50f;
+        upsideDown = true;
+        transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+        hitBox.SetActive(true);
+        yield return new WaitForSeconds(0.15f);
+        grav.forceMagnitude = -10f;
+    }
+    public IEnumerator Reset()
+    {
+        hitBox.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+        upsideDown = false;
+        transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+    }
+
+    
+
+
+    public override void Jump()
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -124,6 +141,12 @@ public class Unit_Controller : MonoBehaviour {
             {
                 can_jump = false;
                 rigidB.AddForce(curr_up * 90f);
+                if (upsideDown)
+                    StartCoroutine(Reset());
+                else if (!upsideDown)
+                    StartCoroutine(Attack());
+                
+
             }
         }
         if (Input.GetKey(KeyCode.W) && !can_jump)
@@ -134,32 +157,7 @@ public class Unit_Controller : MonoBehaviour {
         {
             grav.forceMagnitude = -10f;
         }
+        
+        
     }
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Planet")
-        {
-            can_jump = true;
-            grav.forceMagnitude = -10f;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Planet")
-        {
-            can_jump = false;
-        }
-    }
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Planet")
-        {
-            can_jump = true;
-            grav.forceMagnitude = -10f;
-        }
-    }
-
 }
