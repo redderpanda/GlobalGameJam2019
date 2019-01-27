@@ -8,9 +8,9 @@ public class Team_Controller_Script : MonoBehaviour {
     private string current_character_string;
     private GameObject current_character_obj;
 
-    public float[] planetGravity = new float[] { 10, 10, 10, 10, 10 };
-    public float[] planetJumpGravity = new float[] { 6, 6, 6, 6, 6 };
-    public string[] planetNames = new string[] { "Level1", "Level2", "Level3", "Level4", "Level5" };
+    public static float[] planetGravity = new float[] { 10, 10, 10, 10, 10 };
+    public static float[] planetJumpGravity = new float[] { 6, 6, 6, 6, 6 };
+    public static string[] planetNames = new string[] { "Level1", "Level2", "Level3", "Level4", "Level5" };
 
     // Use this for initialization
     void Start () {

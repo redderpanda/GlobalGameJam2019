@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Unit_Controller : MonoBehaviour {
     public float speed = 5f;
@@ -14,6 +15,7 @@ public class Unit_Controller : MonoBehaviour {
     public bool being_controlled = false;
     public bool facing_right = true;
     public float angleBetween = 0f;
+    public int currentSceneIndex = 0;
 
     
 
@@ -23,9 +25,19 @@ public class Unit_Controller : MonoBehaviour {
     // Use this for initialization
     protected virtual void Start () {
         rigidB = this.GetComponent<Rigidbody2D>();
-        Planet = GameObject.Find("OutterShell");
+        Planet = GameObject.Find("OuterShell");
         grav = Planet.transform.GetChild(1).GetComponent<PointEffector2D>();
         anim = GetComponent<Animator>();
+        for(int i = 0; i <= 5; i++)
+        {
+            if(SceneManager.GetActiveScene().name == Team_Controller_Script.planetNames[i])
+            {
+                currentSceneIndex = i;
+                break;
+            }
+
+        }
+
     }
 	
 	// Update is called once per frame
