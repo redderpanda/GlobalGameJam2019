@@ -23,7 +23,7 @@ public class TurnOnOff : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") || collision.CompareTag("Friend"))
+        if (collision.CompareTag("Player"))
             item.SetActive(false);
     }
 }
