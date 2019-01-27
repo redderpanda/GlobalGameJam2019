@@ -3645,7 +3645,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1153944859}
   m_Layer: 0
-  m_Name: OutterShell
+  m_Name: OuterShell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

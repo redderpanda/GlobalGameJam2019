@@ -31,7 +31,7 @@ public class Best_Friend_Controller : Unit_Controller {
 
     public void Freeze()
     {
-        if(Input.GetKeyDown(KeyCode.RightShift))
+        if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             frozen = !frozen;
             if(frozen)

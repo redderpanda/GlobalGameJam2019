@@ -131,7 +131,7 @@ public class Unit_Controller : MonoBehaviour {
 
     public virtual void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {
             float rad = angleBetween * Mathf.PI / 180;
             Vector2 curr_up = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
@@ -141,11 +141,11 @@ public class Unit_Controller : MonoBehaviour {
                 rigidB.AddForce(curr_up * 80f);
             }
         }
-        if (Input.GetKey(KeyCode.W) && !can_jump)
+        if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)) && !can_jump)
         {
             grav.forceMagnitude = -6f;
         }
-        if (Input.GetKeyUp(KeyCode.W) && !can_jump)
+        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W)) && !can_jump)
         {
             grav.forceMagnitude = -10f;
         }

@@ -16,7 +16,7 @@ public class Team_Controller_Script : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("e") && current_character_string == "1")
         {
             avengers_assemble();
         }
