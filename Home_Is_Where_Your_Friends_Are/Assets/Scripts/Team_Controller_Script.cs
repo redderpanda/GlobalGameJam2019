@@ -7,8 +7,12 @@ public class Team_Controller_Script : MonoBehaviour {
     private string current_character_string;
     private GameObject current_character_obj;
 
-	// Use this for initialization
-	void Start () {
+    public float[] planetGravity = new float[] { 10, 10, 10, 10, 10 };
+    public float[] planetJumpGravity = new float[] { 6, 6, 6, 6, 6 };
+    public string[] planetNames = new string[] { "Level1", "Level2", "Level3", "Level4", "Level5" };
+
+    // Use this for initialization
+    void Start () {
         current_character_string = "1";
         current_character_obj = team[0];
 	}

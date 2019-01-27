@@ -145,6 +145,24 @@ MonoBehaviour:
   - {fileID: 1571859879}
   - {fileID: 1452552663}
   - {fileID: 1713289568}
+  planetGravity:
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  planetJumpGravity:
+  - 6
+  - 6
+  - 6
+  - 6
+  - 6
+  planetNames:
+  - Level1
+  - Level2
+  - Level3
+  - Level4
+  - Level5
 --- !u!4 &94877721
 Transform:
   m_ObjectHideFlags: 0
@@ -292,6 +310,9 @@ MonoBehaviour:
   being_controlled: 0
   facing_right: 1
   angleBetween: 0
+  planetGravity: []
+  planetJumpGravity: []
+  planetNames: []
   anim: {fileID: 0}
   target: {fileID: 0}
 --- !u!50 &311465007
@@ -1183,6 +1204,9 @@ MonoBehaviour:
   being_controlled: 0
   facing_right: 1
   angleBetween: 0
+  planetGravity: []
+  planetJumpGravity: []
+  planetNames: []
   anim: {fileID: 0}
   target: {fileID: 0}
 --- !u!1 &1615296018 stripped
@@ -1212,6 +1236,9 @@ MonoBehaviour:
   being_controlled: 0
   facing_right: 1
   angleBetween: 0
+  planetGravity: []
+  planetJumpGravity: []
+  planetNames: []
   anim: {fileID: 0}
   target: {fileID: 0}
 --- !u!50 &1615296020

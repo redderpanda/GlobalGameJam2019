@@ -15,6 +15,9 @@ public class Unit_Controller : MonoBehaviour {
     public bool facing_right = true;
     public float angleBetween = 0f;
 
+    
+
+
     public Animator anim;
 
     // Use this for initialization
