@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50390753747245172}
   - component: {fileID: 70958333671974870}
   - component: {fileID: 114469930718392028}
+  - component: {fileID: 95873055482345512}
   m_Layer: 0
   m_Name: BFF
   m_TagString: Friend
@@ -78,6 +79,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0.03236197, y: -0.2144076}
   m_Size: {x: 3.8282654, y: 6.260498}
   m_Direction: 0
+--- !u!95 &95873055482345512
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152954372908150}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d5b03de9c6ef2949954025b8abbf5bd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114469930718392028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,6 +119,7 @@ MonoBehaviour:
   being_controlled: 0
   facing_right: 1
   angleBetween: 0
+  anim: {fileID: 95873055482345512}
   frozen: 0
 --- !u!212 &212554926032317686
 SpriteRenderer:
