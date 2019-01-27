@@ -53,6 +53,7 @@ public class Unit_Controller : MonoBehaviour {
     public void OnDestroy()
     {
         GameObject.Find("LevelManager").GetComponent<LevelManager>().currentPlanet = currentPlanetIndex;
+        GameObject.Find("LevelManager").GetComponent<LevelManager>().doOnce = false;
     }
 
     public void TakePlanetRotationInToAccount()
