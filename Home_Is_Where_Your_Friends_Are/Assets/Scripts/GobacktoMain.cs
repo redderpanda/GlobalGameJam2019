@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GobacktoMain : MonoBehaviour {
-    public GameObject MainPlanet, InsideBuilding, Alphabet, InputPassword, Gate, player, spawnpoint, camera, newFollowObject, entrance;
+    public GameObject MainPlanet, InsideBuilding, Alphabet, InputPassword, Gate, player, spawnpoint, camera, newFollowObject, entrance, bff, savage, ce;
     public PointEffector2D newgrav;
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -21,6 +21,9 @@ public class GobacktoMain : MonoBehaviour {
             camera.gameObject.GetComponent<Camera_Follow>().Player = newFollowObject;
             camera.gameObject.GetComponent<Camera>().orthographicSize = 1;
             entrance.gameObject.GetComponent<ChangePartsinLevel>().inMain = true;
+            bff.SetActive(true);
+            savage.SetActive(true);
+            ce.SetActive(true);
         }
     }
 

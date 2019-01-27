@@ -10,7 +10,7 @@ public class EndLevel : MonoBehaviour {
         if(collision.CompareTag("Player") || collision.CompareTag("Friend"))
         {
             spaceship.GetComponent<BoxCollider2D>().enabled = true;
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
     }
 }

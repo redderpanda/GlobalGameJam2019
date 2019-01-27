@@ -155,13 +155,25 @@ public class Savage_Controller : Unit_Controller {
         }
         if (Input.GetButton("Jump") && !can_jump)
         {
-            grav.forceMagnitude = -6f;
+            grav.forceMagnitude = -Team_Controller_Script.planetJumpGravity[currentPlanetIndex];
         }
         if (Input.GetButtonUp("Jump") && !can_jump)
         {
-            grav.forceMagnitude = -10f;
+            grav.forceMagnitude = -Team_Controller_Script.planetJumpGravity[currentPlanetIndex];
         }
         
         
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("died");
+            float rad = collision.gameObject.GetComponentInParent<Unit_Controller>().angleBetween * Mathf.PI / 180;
+            Vector2 curr_up = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
+            collision.gameObject.GetComponentInParent<Unit_Controller>().rigidB.AddForce(curr_up * 80f);
+            //SceneManager.LoadScene("Level2");
+            Destroy(collision.gameObject);
+        }
     }
 }
