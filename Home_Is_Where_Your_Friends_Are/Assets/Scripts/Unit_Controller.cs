@@ -134,14 +134,14 @@ public class Unit_Controller : MonoBehaviour {
 
     public virtual void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             float rad = angleBetween * Mathf.PI / 180;
             Vector2 curr_up = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
             if (can_jump)
             {
                 can_jump = false;
-                rigidB.AddForce(curr_up * 65f);
+                rigidB.AddForce(curr_up * 80f);
             }
         }
         if (Input.GetKey(KeyCode.W) && !can_jump)
