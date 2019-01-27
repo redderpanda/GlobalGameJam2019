@@ -7,7 +7,7 @@ public class GobacktoMain : MonoBehaviour {
     public PointEffector2D newgrav;
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        //if (Input.GetKeyDown(KeyCode.F))
         {
             StartCoroutine(waiting());
             InsideBuilding.SetActive(false);
@@ -19,7 +19,7 @@ public class GobacktoMain : MonoBehaviour {
             InputPassword.SetActive(false);
             Gate.SetActive(false);
             camera.gameObject.GetComponent<Camera_Follow>().Player = newFollowObject;
-            camera.gameObject.GetComponent<Camera>().orthographicSize = 5;
+            camera.gameObject.GetComponent<Camera>().orthographicSize = 1;
             entrance.gameObject.GetComponent<ChangePartsinLevel>().inMain = true;
         }
     }

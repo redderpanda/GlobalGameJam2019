@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ChangePartsinLevel : MonoBehaviour {
 
-    public GameObject MainPlanet, InsideBuilding, Alphabet, InputPassword, Gate, player, spawnpoint, camera, newFollowObject;
+    public GameObject MainPlanet, InsideBuilding, Alphabet, Gate, player, spawnpoint, camera, newFollowObject;
     public PointEffector2D newgrav;
     public bool inMain;
+    public int newCamerasize;
 
     private void Start()
     {
@@ -15,7 +16,7 @@ public class ChangePartsinLevel : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.F) && inMain)
+        if (/*Input.GetKeyDown(KeyCode.F) &&*/ inMain)
         {
             StartCoroutine(waiting());
             MainPlanet.SetActive(false);
@@ -25,7 +26,7 @@ public class ChangePartsinLevel : MonoBehaviour {
             player.gameObject.GetComponent<Unit_Controller>().grav = newgrav;
             Alphabet.gameObject.SetActive(true);
             camera.gameObject.GetComponent<Camera_Follow>().Player = newFollowObject;
-            camera.gameObject.GetComponent<Camera>().orthographicSize = 10;
+            camera.gameObject.GetComponent<Camera>().orthographicSize = newCamerasize;
             inMain = false;
         }
         //else
