@@ -16,8 +16,9 @@ public class Camera_Follow : MonoBehaviour {
     {
         float PlayerXpos = Player.transform.position.x;
         float PlayerYpos = Player.transform.position.y;
-
+        
         transform.position = new Vector3(PlayerXpos, PlayerYpos, z);
+        transform.rotation = Player.transform.rotation;
 
     }
 }
