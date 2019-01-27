@@ -14,17 +14,21 @@ public class Savage_Controller : Unit_Controller {
 	
 	// Update is called once per frame
 	protected override void Update () {
-        if(upsideDown && can_jump)
+        TakePlanetRotationInToAccount();
+        if (being_controlled)
         {
-            Jump();
-        }
-        if(upsideDown && !can_jump)
-        {
-            Fake_Update();
-        }
-        if (!upsideDown)
-        {
-            base.Update();
+            if (upsideDown && can_jump)
+            {
+                Jump();
+            }
+            if (upsideDown && !can_jump)
+            {
+                Fake_Update();
+            }
+            if (!upsideDown)
+            {
+                base.Update();
+            }
         }
     }
 

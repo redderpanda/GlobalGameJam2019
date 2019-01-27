@@ -12,6 +12,7 @@ public class Best_Friend_Controller : Unit_Controller {
 	
 	// Update is called once per frame
 	protected override void Update () {
+        TakePlanetRotationInToAccount();
         if (being_controlled)
         {
             if (frozen)

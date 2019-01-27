@@ -20,6 +20,7 @@ public class Clint_Eastwood_Controller : Unit_Controller {
 	
 	// Update is called once per frame
 	protected override void Update () {
+        TakePlanetRotationInToAccount();
         if (being_controlled)
         {
             base.Update();

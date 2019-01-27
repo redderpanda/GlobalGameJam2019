@@ -15,21 +15,25 @@ public class Unit_Controller : MonoBehaviour {
     public bool facing_right = true;
     public float angleBetween = 0f;
 
+    public Animator anim;
+
     // Use this for initialization
     protected virtual void Start () {
         rigidB = this.GetComponent<Rigidbody2D>();
         grav = Planet.transform.GetChild(1).GetComponent<PointEffector2D>();
+        anim = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
 	protected virtual void Update () {
+        TakePlanetRotationInToAccount();
         if (being_controlled)
         {
             Jared_Take_Inputs();
         }
 	}
 
-    public virtual void Jared_Take_Inputs()
+    public void TakePlanetRotationInToAccount()
     {
         float p_x = Planet.transform.position.x;
         float p_y = Planet.transform.position.y;
@@ -40,8 +44,14 @@ public class Unit_Controller : MonoBehaviour {
         Vector3 eul = transform.eulerAngles;
         Quaternion new_rot = Quaternion.Euler(transform.rotation.x, transform.rotation.y, angleBetween - 90);
         transform.rotation = new_rot;
+    }
+
+    public virtual void Jared_Take_Inputs()
+    {
+        Jump();
         if (Input.GetKey(KeyCode.D))
         {
+            anim.SetBool("Moving", true);
             if (!facing_right)
             {
                 facing_right = true;
@@ -76,8 +86,9 @@ public class Unit_Controller : MonoBehaviour {
                 transform.position = new_pos;
             }
         }
-        if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A))
         {
+            anim.SetBool("Moving", true);
             if (facing_right)
             {
                 facing_right = false;
@@ -111,7 +122,10 @@ public class Unit_Controller : MonoBehaviour {
             }
         }
 
-        Jump();
+        else
+        {
+            anim.SetBool("Moving", false);
+        }
     }
 
     public virtual void Jump()
