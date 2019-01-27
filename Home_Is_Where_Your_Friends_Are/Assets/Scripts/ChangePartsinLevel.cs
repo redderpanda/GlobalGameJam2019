@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class ChangePartsinLevel : MonoBehaviour {
 
-    public GameObject MainPlanet, InsideBuilding, Alphabet, Gate, player, spawnpoint, camera, newFollowObject;
+    public GameObject MainPlanet, InsideBuilding, Alphabet, Gate, player, spawnpoint, camera, newFollowObject, bff,savage, ce;
     public PointEffector2D newgrav;
     public bool inMain;
     public int newCamerasize;
-
     private void Start()
     {
         inMain = true;
@@ -28,6 +27,9 @@ public class ChangePartsinLevel : MonoBehaviour {
             camera.gameObject.GetComponent<Camera_Follow>().Player = newFollowObject;
             camera.gameObject.GetComponent<Camera>().orthographicSize = newCamerasize;
             inMain = false;
+            bff.SetActive(false);
+            savage.SetActive(false);
+            ce.SetActive(false);
         }
         //else
         //{
