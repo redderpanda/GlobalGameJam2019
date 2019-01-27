@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 58273944388691312}
   - component: {fileID: 250173511186842810}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Gravity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

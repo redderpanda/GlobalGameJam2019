@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Unit_Controller : MonoBehaviour {
     public float speed = 5f;
@@ -14,15 +15,30 @@ public class Unit_Controller : MonoBehaviour {
     public bool being_controlled = false;
     public bool facing_right = true;
     public float angleBetween = 0f;
+    public int currentPlanetIndex = 0;
+    public GameObject crown;
+
+    
+
 
     public Animator anim;
 
     // Use this for initialization
     protected virtual void Start () {
         rigidB = this.GetComponent<Rigidbody2D>();
-        Planet = GameObject.Find("OutterShell");
+        Planet = GameObject.Find("OuterShell");
         grav = Planet.transform.GetChild(1).GetComponent<PointEffector2D>();
         anim = GetComponent<Animator>();
+        for(int i = 0; i <= 5; i++)
+        {
+            if(SceneManager.GetActiveScene().name == Team_Controller_Script.planetNames[i])
+            {
+                currentPlanetIndex = i;
+                break;
+            }
+
+        }
+
     }
 	
 	// Update is called once per frame
@@ -131,7 +147,7 @@ public class Unit_Controller : MonoBehaviour {
 
     public virtual void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {
             float rad = angleBetween * Mathf.PI / 180;
             Vector2 curr_up = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
@@ -141,13 +157,13 @@ public class Unit_Controller : MonoBehaviour {
                 rigidB.AddForce(curr_up * 80f);
             }
         }
-        if (Input.GetKey(KeyCode.W) && !can_jump)
+        if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)) && !can_jump)
         {
-            grav.forceMagnitude = -6f;
+            grav.forceMagnitude = -Team_Controller_Script.planetJumpGravity[currentPlanetIndex];
         }
-        if (Input.GetKeyUp(KeyCode.W) && !can_jump)
+        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W)) && !can_jump)
         {
-            grav.forceMagnitude = -10f;
+            grav.forceMagnitude = -Team_Controller_Script.planetGravity[currentPlanetIndex];
         }
     }
 
@@ -173,7 +189,7 @@ public class Unit_Controller : MonoBehaviour {
         if (collision.gameObject.tag == "Planet")
         {
             can_jump = true;
-            grav.forceMagnitude = -10f;
+            grav.forceMagnitude = -Team_Controller_Script.planetGravity[currentPlanetIndex];
         }
     }
 

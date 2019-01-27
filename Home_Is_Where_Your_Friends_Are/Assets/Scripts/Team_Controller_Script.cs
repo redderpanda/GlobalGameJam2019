@@ -8,15 +8,19 @@ public class Team_Controller_Script : MonoBehaviour {
     private string current_character_string;
     private GameObject current_character_obj;
 
-	// Use this for initialization
-	void Start () {
+    public static float[] planetGravity = new float[] { 10, 10, 10, 10, 7 };
+    public static float[] planetJumpGravity = new float[] { 6, 6, 6, 6, 3 };
+    public static string[] planetNames = new string[] { "Level1", "Level2", "Level3", "Level4", "Level5" };
+
+    // Use this for initialization
+    void Start () {
         current_character_string = "1";
         current_character_obj = team[0];
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("e") && current_character_string == "1")
         {
             avengers_assemble();
         }
@@ -57,12 +61,15 @@ public class Team_Controller_Script : MonoBehaviour {
         foreach(GameObject character in team)
         {
             character.GetComponent<Unit_Controller>().being_controlled = false;
+            character.GetComponent<Unit_Controller>().crown.SetActive(false);
             character.gameObject.tag = "Friend";
+
 
 
         }
 
         team[list_index].GetComponent<Unit_Controller>().being_controlled = true;
+        team[list_index].GetComponent<Unit_Controller>().crown.SetActive(true);
         team[list_index].gameObject.tag = "Player";
         camera.GetComponent<Camera_Follow>().Player = team[list_index];
 
