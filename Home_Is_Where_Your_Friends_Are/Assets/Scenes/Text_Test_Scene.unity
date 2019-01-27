@@ -564,6 +564,48 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1001 &523889440
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4425036484385484, guid: de84d4c4dba77e84ba3ec1369bd52060, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 585.5716
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425036484385484, guid: de84d4c4dba77e84ba3ec1369bd52060, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 483.80594
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425036484385484, guid: de84d4c4dba77e84ba3ec1369bd52060, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -7.939148
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425036484385484, guid: de84d4c4dba77e84ba3ec1369bd52060, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425036484385484, guid: de84d4c4dba77e84ba3ec1369bd52060, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425036484385484, guid: de84d4c4dba77e84ba3ec1369bd52060, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425036484385484, guid: de84d4c4dba77e84ba3ec1369bd52060, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425036484385484, guid: de84d4c4dba77e84ba3ec1369bd52060, type: 2}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de84d4c4dba77e84ba3ec1369bd52060, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &524588556
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,7 +1264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a04cd31a3182634dabea565fa76983d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text_chapter_object: {fileID: 1591854043500374, guid: 4f669ade979b953418acfeb4f34e0832,
+  start_now: 1
+  text_chapter_object: {fileID: 1652328637507188, guid: de84d4c4dba77e84ba3ec1369bd52060,
     type: 2}
   Text_Box_Object: {fileID: 341842573}
   Name_Box_Paret_Object: {fileID: 2143837448}
@@ -1248,12 +1291,16 @@ MonoBehaviour:
   Press_e_canvas: {fileID: 2048264766}
   half_stop_characters: 20002c00
   full_stop_characters: 2e0021003f00
+  to_be_trigger: {fileID: 0}
+  team_controller: {fileID: 0}
   Voice_List:
   - {fileID: 718735753}
   - {fileID: 718735756}
   - {fileID: 718735757}
   - {fileID: 718735754}
   Text_Type_Sound: {fileID: 718735753}
+  unit_list: []
+  finished: 0
 --- !u!1 &791490933
 GameObject:
   m_ObjectHideFlags: 0
