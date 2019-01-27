@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Type_Writer_Text : MonoBehaviour {
+    public GameObject text_chapter_object;
     public GameObject Text_Box_Object;
     public GameObject Name_Box_Paret_Object;
     public GameObject writting_text_obj;
@@ -20,7 +21,7 @@ public class Type_Writer_Text : MonoBehaviour {
 
 
     //public string[] Dialog_List;
-    public List<Dialog_Class> Dialog_List;
+    private List<Dialog_Class> Dialog_List;
     private bool text_writting;
     private string current_text;
     private string final_text;
@@ -29,8 +30,8 @@ public class Type_Writer_Text : MonoBehaviour {
     private bool text_over;
     public List<char> half_stop_characters;
     public List<char> full_stop_characters;
-    
 
+    public List<AudioSource> Voice_List;
     public AudioSource Text_Type_Sound;
     //should create a dialog class with the ability to give a player icon, name, side of the dialog window, and the current dialog
     //Add "ugh" sound to play for each character added, or at least each word
@@ -49,6 +50,7 @@ public class Type_Writer_Text : MonoBehaviour {
         bring_up_text_box();
         Name_Box_Paret_Object.SetActive(true);
         activate_containers();
+        Dialog_List = text_chapter_object.GetComponent<Dialog_Chapter_Container>().Dialogue_Container;
 	}
 
     // Update is called once per frame
@@ -118,7 +120,7 @@ public class Type_Writer_Text : MonoBehaviour {
             current_text += final_text[text_cursor];
             writting_text.text = current_text;
 
-            Text_Type_Sound.Play();
+            Voice_List[Dialog_List[dialog_cursor].Voice_Number].Play();
 
             if (Input.GetKey("e"))
             {

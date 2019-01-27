@@ -8,4 +8,5 @@ public class Dialog_Class{
     public string Character_name;
     public bool Left_or_Right;
     public string Dialogue;
+    public int Voice_Number;
 }
