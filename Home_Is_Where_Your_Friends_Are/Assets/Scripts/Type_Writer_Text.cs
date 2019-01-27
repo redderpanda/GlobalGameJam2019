@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Type_Writer_Text : MonoBehaviour {
+    public bool start_now;
+    private bool initial_setup;
     public GameObject text_chapter_object;
     public GameObject Text_Box_Object;
     public GameObject Name_Box_Paret_Object;
@@ -31,45 +33,70 @@ public class Type_Writer_Text : MonoBehaviour {
     public List<char> half_stop_characters;
     public List<char> full_stop_characters;
 
+    public GameObject to_be_trigger;
+    public GameObject team_controller;
+
     public List<AudioSource> Voice_List;
     public AudioSource Text_Type_Sound;
+
+    public GameObject[] unit_list;
+    public bool finished;
     //should create a dialog class with the ability to give a player icon, name, side of the dialog window, and the current dialog
     //Add "ugh" sound to play for each character added, or at least each word
 
 	// Use this for initialization
 	void Start () {
-        writting_text = writting_text_obj.GetComponent<Text>();
-        name_left_text = Name_Box_Left.GetComponent<Text>();
-        name_right_text = Name_Box_Right.GetComponent<Text>();
-        text_writting = false;
-        text_cursor = 0;
-        dialog_cursor = 0;
-        text_over = false;
         Press_e_canvas.SetActive(false);
         Hide_Text_Sequence();
-        bring_up_text_box();
-        Name_Box_Paret_Object.SetActive(true);
-        activate_containers();
-        Dialog_List = text_chapter_object.GetComponent<Dialog_Chapter_Container>().Dialogue_Container;
-        
-	}
+        initial_setup = true;
+        finished = false;
+    }
 
     // Update is called once per frame
     void Update() {
-        if (!text_over)
+        if (!finished)
         {
-            if (!text_writting)
+
+
+            if (start_now)
             {
-                Debug.Log("Text_Writing");
-                StartCoroutine(write_text());
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown("e"))
-            {
-                //End Text Sequence, or advance to next scene
-                Hide_Text_Sequence();
+                Take_Away_Control();
+                if (initial_setup)
+                {
+                    initial_setup = false;
+                    writting_text = writting_text_obj.GetComponent<Text>();
+                    name_left_text = Name_Box_Left.GetComponent<Text>();
+                    name_right_text = Name_Box_Right.GetComponent<Text>();
+                    text_writting = false;
+                    text_cursor = 0;
+                    dialog_cursor = 0;
+                    text_over = false;
+
+
+                    bring_up_text_box();
+                    Name_Box_Paret_Object.SetActive(true);
+                    activate_containers();
+                    Dialog_List = text_chapter_object.GetComponent<Dialog_Chapter_Container>().Dialogue_Container;
+                }
+                if (!text_over)
+                {
+                    if (!text_writting)
+                    {
+                        Debug.Log("Text_Writing");
+                        StartCoroutine(write_text());
+                    }
+                }
+                else
+                {
+                    if (Input.GetKeyDown("e"))
+                    {
+                        //End Text Sequence, or advance to next scene
+                        Hide_Text_Sequence();
+                        trigger_event();
+                        Grant_Control();
+                        finished = true;
+                    }
+                }
             }
         }
 	}
@@ -201,6 +228,32 @@ public class Type_Writer_Text : MonoBehaviour {
         foreach (GameObject canvas in relevant_canvases)
         {
             canvas.SetActive(true);
+        }
+    }
+
+    public void trigger_event()
+    {
+        if(to_be_trigger != null)
+        {
+            to_be_trigger.GetComponent<Little_Animtio_Script>().triggered = true;
+        }
+        
+    }
+
+    public void Grant_Control()
+    {
+        if(team_controller != null)
+        {
+            team_controller.SetActive(true);
+        }
+    }
+
+    public void Take_Away_Control()
+    {
+        foreach(GameObject unit in unit_list)
+        {
+            unit.GetComponent<Unit_Controller>().being_controlled = false;
+            team_controller.SetActive(false);
         }
     }
 }
