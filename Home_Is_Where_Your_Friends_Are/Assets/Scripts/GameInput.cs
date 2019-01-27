@@ -7,18 +7,23 @@ public class GameInput : MonoBehaviour {
 
     private InputField input;
     public GameObject wall;
+    public GameObject textaccepted;
     private void Awake()
     {
-        input = GameObject.Find("InputField").GetComponent<InputField>();
+        input = GameObject.Find("InputsField").GetComponentInChildren<InputField>();
     }
 
     public void GetInput(string password)
     {
         Debug.Log("Password: " + password);
-        input.text = "";
-        if(password.ToLower() == "open")
+        if (password.ToLower() == "open")
         {
+            textaccepted.SetActive(true);
             wall.SetActive(false);
+        }
+        else
+        {
+            input.text = "";
         }
     }
 }

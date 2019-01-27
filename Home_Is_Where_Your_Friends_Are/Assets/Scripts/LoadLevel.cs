@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LoadLevel : MonoBehaviour {
-    public int sceneIndex;
+    public string sceneIndex;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,7 +13,7 @@ public class LoadLevel : MonoBehaviour {
             LoadScene(sceneIndex);
         }
     }
-    void LoadScene(int sceneIndex)
+    void LoadScene(string sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
     }
