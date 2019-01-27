@@ -137,7 +137,7 @@ public class Savage_Controller : Unit_Controller {
 
     public override void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetButtonDown("Jump"))
         {
             float rad = angleBetween * Mathf.PI / 180;
             Vector2 curr_up = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
@@ -153,11 +153,11 @@ public class Savage_Controller : Unit_Controller {
 
             }
         }
-        if (Input.GetKey(KeyCode.W) && !can_jump)
+        if (Input.GetButton("Jump") && !can_jump)
         {
             grav.forceMagnitude = -6f;
         }
-        if (Input.GetKeyUp(KeyCode.W) && !can_jump)
+        if (Input.GetButtonUp("Jump") && !can_jump)
         {
             grav.forceMagnitude = -10f;
         }

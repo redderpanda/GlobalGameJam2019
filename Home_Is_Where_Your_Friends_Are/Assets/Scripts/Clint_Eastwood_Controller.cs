@@ -30,11 +30,11 @@ public class Clint_Eastwood_Controller : Unit_Controller {
 
     public void HatGrowth()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             wentUp = !wentUp;
         }
-        if(Input.GetKey(KeyCode.Q) && wentUp)
+        if(Input.GetKey(KeyCode.LeftShift) && wentUp)
         {
             float scale_y = hatTop.transform.localScale.y + (hatSpeed * Time.deltaTime);
             float pos_y = hatTop.transform.localPosition.y + (hatPosSpeed * Time.deltaTime);
@@ -42,7 +42,7 @@ public class Clint_Eastwood_Controller : Unit_Controller {
             hatTop.transform.localScale = new Vector3(hatTop.transform.localScale.x, Mathf.Clamp(scale_y,minHeight,maxHeight), hatTop.transform.localScale.z);
             hatTop.transform.localPosition = new Vector3(hatTop.transform.localPosition.x, Mathf.Clamp(pos_y, hatMin, hatMax), hatTop.transform.localPosition.z);
         }
-        if (Input.GetKey(KeyCode.Q) && !wentUp)
+        if (Input.GetKey(KeyCode.LeftShift) && !wentUp)
         {
             float scale_y = hatTop.transform.localScale.y - (hatSpeed * Time.deltaTime);
             float pos_y = hatTop.transform.localPosition.y - (hatPosSpeed * Time.deltaTime);
