@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Type_Writer_Text : MonoBehaviour {
+public class Type_Writer_2 : MonoBehaviour
+{
     public bool start_now;
     private bool initial_setup;
     public GameObject text_chapter_object;
@@ -20,6 +21,8 @@ public class Type_Writer_Text : MonoBehaviour {
     public GameObject[] Character_Portraits;
     public List<GameObject> relevant_canvases;
     public GameObject Press_e_canvas;
+    public GameObject Icons;
+
 
 
     //public string[] Dialog_List;
@@ -43,17 +46,42 @@ public class Type_Writer_Text : MonoBehaviour {
     public bool finished;
     //should create a dialog class with the ability to give a player icon, name, side of the dialog window, and the current dialog
     //Add "ugh" sound to play for each character added, or at least each word
+    public GameObject MC_Icon_Left;
+    public GameObject Clint_Icon_Left;
+    public GameObject Clint_Icon_Right;
+    public GameObject MC_Icon_Right;
+    public GameObject Dog_Icon_Right;
+    public GameObject Savage_Icon_Left;
+    public GameObject Savage_Icon_Right;
+    public GameObject BFF_Icon_Left;
+    public GameObject BFF_Icon_Right;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    public void Get_Icons()
+    {
+        MC_Icon_Left = GameObject.Find("MC_Icon_Left");
+        Clint_Icon_Left = GameObject.Find("Clint_Icon_Left");
+        Clint_Icon_Right = GameObject.Find("Clint_Icon_Right");
+        MC_Icon_Right = GameObject.Find("MC_Icon_Right");
+        Dog_Icon_Right = GameObject.Find("Dog_Icon_Right");
+        Savage_Icon_Left = GameObject.Find("Savage_Icon_Left");
+        Savage_Icon_Right = GameObject.Find("Savage_Icon_Right");
+        BFF_Icon_Left = GameObject.Find("BFF_Icon_Left");
+        BFF_Icon_Right = GameObject.Find("BFF_Icon_Right");
+    }
+
+    void Start()
+    {
         Press_e_canvas.SetActive(false);
         Hide_Text_Sequence();
         initial_setup = true;
         finished = false;
+        Get_Icons();
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         if (!finished)
         {
 
@@ -99,7 +127,7 @@ public class Type_Writer_Text : MonoBehaviour {
                 }
             }
         }
-	}
+    }
 
     public IEnumerator write_text()
     {
@@ -107,13 +135,13 @@ public class Type_Writer_Text : MonoBehaviour {
         current_text = "";
         text_cursor = 0;
         grey_active_Icons();
-        
+
         final_text = Dialog_List[dialog_cursor].Dialogue;
 
-        if(Dialog_List[dialog_cursor].Left_or_Right == true)
+        if (Dialog_List[dialog_cursor].Left_or_Right == true)
         {
             List<Dialog_Class> Dialogs_Before_This = Dialog_List.GetRange(0, dialog_cursor);
-            foreach(Dialog_Class DC in Dialog_List)
+            foreach (Dialog_Class DC in Dialog_List)
             {
                 DC.Icon.SetActive(false);
                 DC.Icon_R.SetActive(false);
@@ -202,7 +230,7 @@ public class Type_Writer_Text : MonoBehaviour {
 
     public void Hide_Text_Sequence()
     {
-        foreach(GameObject canvas in relevant_canvases)
+        foreach (GameObject canvas in relevant_canvases)
         {
             canvas.SetActive(false);
         }
@@ -212,7 +240,7 @@ public class Type_Writer_Text : MonoBehaviour {
 
     public void grey_active_Icons()
     {
-        foreach(GameObject icon_obj in Character_Portraits)
+        foreach (GameObject icon_obj in Character_Portraits)
         {
             icon_obj.GetComponent<Image>().color = Color.grey;
         }
@@ -233,17 +261,16 @@ public class Type_Writer_Text : MonoBehaviour {
 
     public void trigger_event()
     {
-        if(to_be_trigger != null)
+        if (to_be_trigger != null)
         {
-            
             to_be_trigger.GetComponent<Little_Animtio_Script>().triggered = true;
         }
-        
+
     }
 
     public void Grant_Control()
     {
-        if(team_controller != null)
+        if (team_controller != null)
         {
             team_controller.SetActive(true);
         }
@@ -251,7 +278,7 @@ public class Type_Writer_Text : MonoBehaviour {
 
     public void Take_Away_Control()
     {
-        foreach(GameObject unit in unit_list)
+        foreach (GameObject unit in unit_list)
         {
             unit.GetComponent<Unit_Controller>().being_controlled = false;
             team_controller.SetActive(false);
