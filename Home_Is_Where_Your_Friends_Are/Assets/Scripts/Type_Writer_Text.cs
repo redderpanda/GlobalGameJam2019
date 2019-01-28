@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Type_Writer_Text : MonoBehaviour {
@@ -256,5 +257,10 @@ public class Type_Writer_Text : MonoBehaviour {
             unit.GetComponent<Unit_Controller>().being_controlled = false;
             team_controller.SetActive(false);
         }
+    }
+
+    public void EndGame()
+    {
+        SceneManager.LoadScene("Credits");
     }
 }
