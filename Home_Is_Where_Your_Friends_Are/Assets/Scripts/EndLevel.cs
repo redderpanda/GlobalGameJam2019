@@ -7,7 +7,7 @@ public class EndLevel : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player") || collision.CompareTag("Friend"))
+        if(collision.CompareTag("Player"))
         {
             spaceship.GetComponent<BoxCollider2D>().enabled = true;
             //gameObject.SetActive(false);
