@@ -25,7 +25,7 @@ public class Enemy_Controller : Unit_Controller {
                 //flip
                 transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             }
-            angleBetween -= 8f / Planet.transform.GetChild(0).transform.localScale.x;
+            angleBetween -= 6f / Planet.transform.GetChild(0).transform.localScale.x;
             float sin_val = Mathf.Sin(angleBetween * Mathf.PI / 180);
             float dist = Vector3.Distance(transform.position, Planet.transform.GetChild(0).transform.position);
             //Debug.Log(dist);
