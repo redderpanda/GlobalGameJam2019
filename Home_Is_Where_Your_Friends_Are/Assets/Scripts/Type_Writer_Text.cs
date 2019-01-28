@@ -235,6 +235,7 @@ public class Type_Writer_Text : MonoBehaviour {
     {
         if(to_be_trigger != null)
         {
+            
             to_be_trigger.GetComponent<Little_Animtio_Script>().triggered = true;
         }
         
